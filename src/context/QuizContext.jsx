@@ -8,16 +8,20 @@ const QuizContextProvider = (props) => {
 
   useEffect(() => {
     fetchQuestions();
-  })
+  }, [])
+
+
+
+
 
   const fetchQuestions = async () => {
     const response = await fetch("https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean")
     const data = await response.json();
-    console.log(data);
+    setQuestions(data.results)
   }
 
   return(
-    <QuizContext.Provider>
+    <QuizContext.Provider value = {{questions}}>
       {props.children}
     </QuizContext.Provider>
   )

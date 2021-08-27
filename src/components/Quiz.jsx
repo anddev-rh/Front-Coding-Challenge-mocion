@@ -1,24 +1,54 @@
-import React, { useEffect, useState} from 'react';
-
+import React, { useContext, useEffect, useState} from 'react';
+import  {QuizContext} from '../context/QuizContext'
 const Quiz = () => {
 
+  const {questions} = useContext(QuizContext);
 
+  const [indexQuestion, setIndexQuestion] = useState(0);
+  
+  const actualQuestion = questions[indexQuestion];
 
-  useEffect(() => {
-    fetchQuestions();
-  })
-
-  const fetchQuestions = async () => {
-    const response = await fetch("https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean")
-    const data = await response.json();
-    console.log(data);
+  
+  const nextQuestion = () => {
+    setIndexQuestion(indexQuestion + 1);
   }
+  
 
 
 
-  return (
-    <p>quiz</p>
+
+
+
+  return (  
+
+    
+    <div>
+
+      {actualQuestion ? (
+
+        <div>
+          <h1>{actualQuestion.category}</h1>
+            <div>
+              <p>{actualQuestion.question}</p>
+            </div>
+          <p>{indexQuestion + 1} of 10</p>
+          <button onClick={nextQuestion}>
+            True
+          </button>
+          <button>
+            False
+          </button>
+        </div>
+
+      ): null }
+
+    </div>
+
   )
+
+
+
+  
 }
 
 export default Quiz;
