@@ -1,15 +1,37 @@
 import React, { useContext, useEffect, useState} from 'react';
-import  {QuizContext} from '../context/QuizContext'
+import { Link } from 'react-router-dom';
+import  {QuizContext} from '../context/QuizContext';
 const Quiz = () => {
 
-  const {questions} = useContext(QuizContext);
+  const {questions, deleteFromRightAnswers} = useContext(QuizContext);
 
   const [indexQuestion, setIndexQuestion] = useState(0);
   
   const actualQuestion = questions[indexQuestion];
 
+
+
+  const isRightAnswer = (userAnswer) => {
+    
+    const dataRightAnswer = actualQuestion.correct_answer;
   
-  const nextQuestion = () => {
+    if(dataRightAnswer === "True" && userAnswer === true) {
+      return true
+    } else if (dataRightAnswer === "False" && userAnswer === false) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  const handleAnswer = (userAnswer) => {
+
+    
+
+    if (!isRightAnswer(userAnswer)){  
+      deleteFromRightAnswers(actualQuestion.question);
+    } 
+    
     setIndexQuestion(indexQuestion + 1);
   }
   
@@ -24,6 +46,8 @@ const Quiz = () => {
     
     <div>
 
+
+
       {actualQuestion ? (
 
         <div>
@@ -32,15 +56,19 @@ const Quiz = () => {
               <p>{actualQuestion.question}</p>
             </div>
           <p>{indexQuestion + 1} of 10</p>
-          <button onClick={nextQuestion}>
+          <button onClick={() => {handleAnswer(true)}}>
             True
           </button>
-          <button>
+          <button onClick={() => {handleAnswer(false)}}>
             False
           </button>
+
+          
         </div>
 
       ): null }
+
+      {indexQuestion === 10 &&  <Link to="/results"> Go to results</Link> }
 
     </div>
 
