@@ -3,6 +3,8 @@ import  {QuizContext} from '../context/QuizContext';
 import { Link } from 'react-router-dom'
 import Home from './Home';
 
+import './styles/Results.css'
+
 const Results = () => {
 
   const {questions, rightAnswers} = useContext(QuizContext);
@@ -14,10 +16,10 @@ const Results = () => {
 
       <ul>
         {questions.map(q => {
-          return(<li>
-            {q.correct_answer === "True" && <p>+</p> }
-            {q.correct_answer === "False" && <p>-</p> }
-            {q.question}
+          return(<li className="result-item">
+            {q.correct_answer === "True" && <span className="result-item--sign">+</span> }
+            {q.correct_answer === "False" && <span className="result-item--sign">-</span> }
+            <span className="result-item--question">{q.question}</span>
           </li>)
 
         })}

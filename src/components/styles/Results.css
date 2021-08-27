@@ -1,0 +1,14 @@
+.result-item {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.result-item--sign {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.result-item--question {
+  text-align: center;
+}
