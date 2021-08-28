@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import  {QuizContext} from '../context/QuizContext';
+
+import './styles/Quiz.css'
 const Quiz = () => {
 
   const {questions, deleteFromRightAnswers, fetchQuestions} = useContext(QuizContext);
@@ -48,16 +50,16 @@ const Quiz = () => {
 
       {actualQuestion ? (
 
-        <div>
+        <div className="question-container" >
           <h1>{actualQuestion.category}</h1>
-            <div>
-              <p>{actualQuestion.question}</p>
-            </div>
+            
+          <p>{actualQuestion.question}</p>
+            
           <p>{indexQuestion + 1} of 10</p>
           <button onClick={() => {handleAnswer(true)}}>
             True
           </button>
-          <button onClick={() => {handleAnswer(false)}}>
+          <button onClick={() => {handleAnswer(false)}} className="false">
             False
           </button>
 
@@ -66,7 +68,7 @@ const Quiz = () => {
 
       ): null }
 
-      {indexQuestion === 10 &&  <Link to="/results"> Go to results</Link> }
+      {indexQuestion === 10 &&  <Link to="/results" className="link"> Go to results</Link> }
 
     </div>
 

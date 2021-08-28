@@ -10,7 +10,7 @@ const Results = () => {
   const {questions, rightAnswers} = useContext(QuizContext);
 
   return (
-    <div>
+    <div className="results-container">
       <h1>You scored</h1>
       <h2>{rightAnswers.length} / 10</h2>
 
@@ -26,7 +26,7 @@ const Results = () => {
       </ul>
 
       
-      <Link to="/">PLAY AGAIN?</Link>
+      <Link to="/" className="link link-results">PLAY AGAIN?</Link>
 
     </div>
   )
