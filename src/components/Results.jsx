@@ -7,7 +7,12 @@ import './styles/Results.css'
 
 const Results = () => {
 
-  const {questions, rightAnswers} = useContext(QuizContext);
+  const {questions, setQuestions, rightAnswers} = useContext(QuizContext);
+
+  const resetQuestions = () => {
+    setQuestions([]);
+  }
+
 
   return (
     <div className="results-container">
@@ -29,7 +34,7 @@ const Results = () => {
       </ul>
 
       
-      <Link to="/" className="link link-results">PLAY AGAIN?</Link>
+      <Link to="/" className="link link-results" onClick={resetQuestions}>PLAY AGAIN?</Link>
 
     </div>
   )

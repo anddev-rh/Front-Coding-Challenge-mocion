@@ -30,7 +30,7 @@ const QuizContextProvider = (props) => {
 
 
   return(
-    <QuizContext.Provider value = {{questions, deleteFromRightAnswers, rightAnswers, fetchQuestions}}>
+    <QuizContext.Provider value = {{questions, setQuestions, deleteFromRightAnswers, rightAnswers, fetchQuestions}}>
       {props.children}
     </QuizContext.Provider>
   )

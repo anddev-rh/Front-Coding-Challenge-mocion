@@ -1,7 +1,7 @@
 .results-container {
   align-self: center;
   width: 800px;
-  height: 100vh;
+  height: 80%;
   gap: 20px;
   margin-bottom: 100px;
 }

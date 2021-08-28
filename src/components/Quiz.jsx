@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import  {QuizContext} from '../context/QuizContext';
+import Loader from './Loader';
+
+
 
 import './styles/Quiz.css'
 const Quiz = () => {
@@ -10,6 +13,8 @@ const Quiz = () => {
   const [indexQuestion, setIndexQuestion] = useState(0);
   
   const actualQuestion = questions[indexQuestion];
+
+  const history = useHistory();
 
   useEffect(() => {
     fetchQuestions();
@@ -34,12 +39,14 @@ const Quiz = () => {
     } 
     setIndexQuestion(indexQuestion + 1);
   }
-  
+
+
+
 
   return (  
 
     
-    <div>
+    <div className="quiz-container" >
 
 
 
@@ -61,9 +68,9 @@ const Quiz = () => {
           
         </div>
 
-      ): null }
+      ): <Loader/> }
 
-      {indexQuestion === 10 &&  <Link to="/results" className="link"> Go to results</Link> }
+      {indexQuestion === 10 && history.push("/results")}
 
     </div>
 
