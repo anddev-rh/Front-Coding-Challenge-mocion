@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import  {QuizContext} from '../context/QuizContext';
 const Quiz = () => {
 
-  const {questions, deleteFromRightAnswers} = useContext(QuizContext);
+  const {questions, deleteFromRightAnswers, fetchQuestions} = useContext(QuizContext);
 
   const [indexQuestion, setIndexQuestion] = useState(0);
   
   const actualQuestion = questions[indexQuestion];
 
-
+  useEffect(() => {
+    fetchQuestions();
+  }, [])
 
   const isRightAnswer = (userAnswer) => {
     
@@ -24,14 +26,10 @@ const Quiz = () => {
     }
   }
 
-  const handleAnswer = (userAnswer) => {
-
-    
-
+  const handleAnswer = (userAnswer) => {    
     if (!isRightAnswer(userAnswer)){  
       deleteFromRightAnswers(actualQuestion.question);
     } 
-    
     setIndexQuestion(indexQuestion + 1);
   }
   

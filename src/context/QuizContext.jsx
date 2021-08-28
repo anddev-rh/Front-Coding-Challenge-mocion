@@ -8,11 +8,11 @@ const QuizContextProvider = (props) => {
 
   const [rightAnswers, setRightAnswers] = useState([]);
 
-  useEffect(() => {
-    fetchQuestions();
-  }, [])
+  // useEffect(() => {
+  //   fetchQuestions();
+  // }, [])
 
-
+  
 
 
 
@@ -30,7 +30,7 @@ const QuizContextProvider = (props) => {
 
 
   return(
-    <QuizContext.Provider value = {{questions, deleteFromRightAnswers, rightAnswers}}>
+    <QuizContext.Provider value = {{questions, deleteFromRightAnswers, rightAnswers, fetchQuestions}}>
       {props.children}
     </QuizContext.Provider>
   )
