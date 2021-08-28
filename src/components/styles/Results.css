@@ -35,3 +35,12 @@
   align-self: center;
   width: 40%;
 }
+
+@media (max-width: 800px) {
+  .results-container {
+    width: 80%;
+  }
+  .result-item--question {
+    font-size: 16px;
+  }
+}
