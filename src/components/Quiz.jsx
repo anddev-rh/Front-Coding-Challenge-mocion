@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState} from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import  {QuizContext} from '../context/QuizContext';
 import Loader from './Loader';
 
@@ -44,19 +44,13 @@ const Quiz = () => {
 
 
   return (  
-
     
     <div className="quiz-container" >
 
-
-
       {actualQuestion ? (
-
         <div className="question-container" >
           <h1>{actualQuestion.category}</h1>
-            
           <p dangerouslySetInnerHTML={{__html: actualQuestion.question}}></p>
-          
           <p>{indexQuestion + 1} of 10</p>
           <button onClick={() => {handleAnswer(true)}}>
             True
@@ -64,21 +58,12 @@ const Quiz = () => {
           <button onClick={() => {handleAnswer(false)}} className="false">
             False
           </button>
-
-          
         </div>
-
       ): <Loader/> }
 
       {indexQuestion === 10 && history.push("/results")}
-
     </div>
-
-  )
-
-
-
-  
+  )  
 }
 
 export default Quiz;

@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from 'react';
+import React, {createContext, useState} from 'react';
 
 export const QuizContext = createContext(); 
 
@@ -7,14 +7,6 @@ const QuizContextProvider = (props) => {
   const [questions, setQuestions] = useState([]);
 
   const [rightAnswers, setRightAnswers] = useState([]);
-
-  // useEffect(() => {
-  //   fetchQuestions();
-  // }, [])
-
-  
-
-
 
   const fetchQuestions = async () => {
     const response = await fetch("https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean")
@@ -26,8 +18,6 @@ const QuizContextProvider = (props) => {
   const deleteFromRightAnswers = (question) => {
     setRightAnswers(rightAnswers.filter(answer => answer.question !== question))
   }
-
-
 
   return(
     <QuizContext.Provider value = {{questions, setQuestions, deleteFromRightAnswers, rightAnswers, fetchQuestions}}>

@@ -14,8 +14,6 @@
   align-items: center;
   height: 100%;
   margin: auto;
-  /* 	width: 350px; */
-  /* 	font-size:26px; */
   font-family: Helvetica, sans-serif, Arial;
   animation: load 0.5s infinite 0s ease-in-out;
   animation-direction: alternate;
