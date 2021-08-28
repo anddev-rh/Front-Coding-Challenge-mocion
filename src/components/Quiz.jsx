@@ -36,11 +36,6 @@ const Quiz = () => {
   }
   
 
-
-
-
-
-
   return (  
 
     
@@ -53,8 +48,8 @@ const Quiz = () => {
         <div className="question-container" >
           <h1>{actualQuestion.category}</h1>
             
-          <p>{actualQuestion.question}</p>
-            
+          <p dangerouslySetInnerHTML={{__html: actualQuestion.question}}></p>
+          
           <p>{indexQuestion + 1} of 10</p>
           <button onClick={() => {handleAnswer(true)}}>
             True

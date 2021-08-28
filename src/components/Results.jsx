@@ -19,7 +19,10 @@ const Results = () => {
           return(<li className="result-item">
             {q.correct_answer === "True" && <span className="result-item--sign">+</span> }
             {q.correct_answer === "False" && <span className="result-item--sign">-</span> }
-            <span className="result-item--question">{q.question}</span>
+            <span 
+              className="result-item--question"
+              dangerouslySetInnerHTML={{__html: q.question}}>              
+            </span>
           </li>)
 
         })}
